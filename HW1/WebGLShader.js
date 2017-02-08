@@ -39,7 +39,6 @@ float sunRiseSet =0.1; //lowerlimit for saturation
 float actualGradient = 1.5;
 //when actualGradient approaches infinity = 
 //when actualGradient approaches 0. = 
-
 float horizonOffset =.7;
 float speedOfSunsetSunRise=1.;
 
@@ -48,6 +47,7 @@ float speedOfSunsetSunRise=1.;
 float test = pow(y+horizonOffset,(.95+.95*sin(speedOfSunsetSunRise*uTime)));
 //other test for gradient change 
 float t = 0.5+0.5*sin(uTime+3.14);
+//make it vary between 1 and 0 --> adding or subtracting 
 
 
 float earthColor = 0.5;
@@ -73,12 +73,10 @@ vec3 c = mix(vec3(r1,g1,b1),vec3(r2,g2,b2),test);
 //wants on something 
 //whatever you add with sin function to add 
 //need it to be cyclic aka sin or cos 
-
 float exp=1.+0.5+sin(uTime);
   //changing colors of blue and green for sky with time 
   float b = 1. - 1. * sin(1. * uTime);
   float g = 0.3 - 0.3 * sin(.85 * uTime);
-  
 //comment this out below and get the gradient back
   //c = vec3(0,g,b);
    if (sun > 0.){// needed to set sun color only
@@ -87,7 +85,6 @@ float exp=1.+0.5+sin(uTime);
    //color the earth
    if (earth > 0.)
      c = vec3(0., earthColor, 0);
-
    gl_FragColor = vec4(sqrt(c), 1.);             // Final pixel color
 }
 
