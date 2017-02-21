@@ -34,10 +34,6 @@ vec2 raytraceSphere(vec3 V, vec3 W, vec4 S) {
    return t.x > 0. ? t : vec2(1000., 1000.);
 }
 
-vec3 reflection(vec3 L, vec3 N) {
-   return 2. * dot(N, L) * N - L;
-}
-
 
 vec3 phong(vec3 P,vec3 N, vec3 E, vec3 A, vec3 D, vec4 S) {
    vec3 c = A;                                 // Ambient color
@@ -48,7 +44,7 @@ vec3 phong(vec3 P,vec3 N, vec3 E, vec3 A, vec3 D, vec4 S) {
          vec2 newRay = raytraceSphere(ori, LDir, uSpheres[j]);   
          if(newRay.x==1000.){//shadow ray since hit another sphere
             float d = max(0., dot(N, LDir));           // Diffuse value
-            vec3  R = reflection(LDir, N);
+            vec3 R = 2. * dot(N, LDir) * N - LDir;
             float s = pow(max(0., dot(E, R)), S.a);    // Specular value
             c += uLColors[i] * (d * D + s * S.rgb * .1*S.a);
          }
