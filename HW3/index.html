@@ -49,7 +49,7 @@ vec3 phong(vec3 P,vec3 N, vec3 E, vec3 A, vec3 D, vec4 S) {
       for (int i = 0 ; i < uSpheres_length ; i++) {
          vec2 t20 = raytraceSphere(ori, dir, uSpheres[i]);
          
-if(t20.x==1000.) {//shadow ray since hit another sphere
+   if(t20.x==1000.) {//shadow ray since hit another sphere
             float d = max(0., dot(N, LDir));           // Diffuse value
             vec3  R = reflection(LDir, N);
             float s = pow(max(0., dot(E, R)), S.a);    // Specular value
