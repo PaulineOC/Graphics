@@ -27,7 +27,6 @@
 //          }
 //    }//end of face
 
-
    canvas1.update = function(c) {
 
       var mouseX=this.cursor.x;
@@ -72,16 +71,31 @@
       c.closePath();
 
       //Mouth 
-      var size=10*time;
-      var place=20-time;
-      c.beginPath();
+      
+      var grow = 10*time < 80;
+      if(grow){
+            var size=10*time;
+            var place=20-time;
+            c.beginPath();
+            c.ellipse(mouseX,mouseY+place,size,size,0,2*Math.PI,0,1);
+            c.stroke();
+            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+            c.fill();
+            c.closePath();
+      }
+      else {
+            size=80;
+            place=20;
+            c.beginPath();
+            c.ellipse(mouseX,mouseY+place,size,size,0,2*Math.PI,0,1);
+            c.stroke();
+            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+            c.fill();
+            c.closePath(); 
+      }
 
-
-      c.ellipse(mouseX,mouseY+place,size,size,0,2*Math.PI,0,1);
-      c.stroke();
-      c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-      c.fill();
-      c.closePath();
+      
+    
 
 
    
