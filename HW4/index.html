@@ -1,0 +1,97 @@
+
+<head></head>
+
+<div style="margin:auto; width:50%">
+   <canvas id=canvas1 width=600 height=600>
+</div>
+
+
+<script src=drawlib1.js></script>
+<script>
+
+// function face(con,ctX, ctY, r,g,b){
+//          this.canvas=con;
+//          this.x = ctX;
+//          this.y = ctY;
+//          this.red = r;
+//          this.green=g;
+//          this.blue=b;
+
+//          this.drawFace = function(){
+//             this.canvas.lineWidth=10;
+//             this.canvas.beginPath();
+//             this.canvas.ellipse(this.x,this.y,100,100,0,2*Math.PI,0,1);
+//             this.canvas.stroke();
+//             this.canvas.fillStyle ='rgb(' + this.red + ','+this.green +','+ this.blue+')';
+//             this.canvas.fill();
+//          }
+//    }//end of face
+
+
+   canvas1.update = function(c) {
+
+      var mouseX=this.cursor.x;
+      var mouseY=this.cursor.y;
+      var mouseZ=this.cursor.z;
+
+      c.beginPath();
+      c.moveTo(0, 0);
+      c.lineTo(this.width, 0);
+      c.lineTo(this.width, this.height);
+      c.lineTo(0, this.height);
+      c.lineTo(0, 0);
+      c.stroke();
+      c.fillStyle="gray";
+      c.fill();
+      c.closePath();
+
+
+      c.beginPath();
+      c.lineWidth=10;
+      c.ellipse(mouseX,mouseY,100,100,0,2*Math.PI,0,1);
+      c.fillStyle ='rgb(' + 0 + ','+0 +','+ 255+')';
+      c.fill();
+      c.closePath();
+
+      //Eye 1
+      c.beginPath();
+      c.lineWidth=5;
+      c.ellipse(mouseX-30,mouseY-50,10,10,0,2*Math.PI,0,1);
+      c.stroke();
+      c.fillStyle ='rgb(' + 0 +','+0 +','+ 0+')';
+      c.fill();
+      c.stroke(); 
+      c.closePath();
+
+      //Eye 2
+      c.beginPath();
+      c.ellipse(mouseX+30,mouseY-50,10,10,0,2*Math.PI,0,1);
+      c.stroke();
+      c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+      c.fill();
+      c.closePath();
+
+      //Mouth 
+      var size=10*time;
+      var place=20-time;
+      c.beginPath();
+
+
+      c.ellipse(mouseX,mouseY+place,size,size,0,2*Math.PI,0,1);
+      c.stroke();
+      c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+      c.fill();
+      c.closePath();
+
+
+   
+
+
+   }//end of update
+
+
+
+   draw2DCanvases([canvas1 ]);
+</script>
+
+
