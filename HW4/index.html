@@ -2,7 +2,7 @@
 <head></head>
 
 <div style="margin:auto; width:50%">
-   <canvas id=canvas1 width=600 height=600>
+   <canvas id=canvas1 width=500 height=500>
 </div>
 
 
@@ -28,8 +28,8 @@
 //    }//end of face
 
    canvas1.update = function(c) {
-      var spawn_interval = time % 10;
-      var center=300;
+      var spawn_interval = time % 8;
+      var center=250;
       var mouseZ=this.cursor.z;
 
       c.beginPath();
@@ -73,13 +73,11 @@
 
             //var mouthPlace=20-spawn_interval;
             c.beginPath();
-            c.ellipse(center,center+20,10,10,0,2*Math.PI,0,1);
+            c.ellipse(center,center+10,10,10,0,2*Math.PI,0,1);
             c.stroke();
             c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
             c.fill();
             c.closePath();
-
-
 
       }
       if (spawn_interval == 2500) {
@@ -111,22 +109,38 @@
             // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
             // c.fill();
             // c.closePath();
-
-            var mouthSize=40*spawn_interval;
+            
+            //Mouth
+            var mouthSize=10*spawn_interval;
             //var mouthPlace=100/spawn_interval;
+
+            if(spawn_interval > 2){
+                  mouthSize+=20*spawn_interval;
+            }
+
             c.beginPath();
-            c.ellipse(center,center+20,mouthSize,mouthSize,0,2*Math.PI,0,1);
+            c.ellipse(center,center+10,mouthSize,mouthSize,0,2*Math.PI,0,1);
             c.stroke();
             c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
             c.fill();
             c.closePath();
 
+
+
       }
 
 
 
-      if (spawn_interval > 2500) {
+      if (spawn_interval > 4) {
             // grow small face
+            c.beginPath();
+            c.ellipse(center,center+15,mouthSize,mouthSize,0,2*Math.PI,0,1);
+            c.stroke();
+            c.fillStyle ='rgb(' + 255 + ','+0 +','+ 0+')';
+            c.fill();
+            c.closePath();
+
+
       }
 
 
