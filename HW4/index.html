@@ -2,36 +2,25 @@
 <head></head>
 
 <div style="margin:auto; width:50%">
-   <canvas id=canvas1 width=500 height=500>
+   <canvas id=canvas1 width=400 height=400>
 </div>
 
 
 <script src=drawlib1.js></script>
 <script>
 
-// function face(con,ctX, ctY, r,g,b){
-//          this.canvas=con;
-//          this.x = ctX;
-//          this.y = ctY;
-//          this.red = r;
-//          this.green=g;
-//          this.blue=b;
-
-//          this.drawFace = function(){
-//             this.canvas.lineWidth=10;
-//             this.canvas.beginPath();
-//             this.canvas.ellipse(this.x,this.y,100,100,0,2*Math.PI,0,1);
-//             this.canvas.stroke();
-//             this.canvas.fillStyle ='rgb(' + this.red + ','+this.green +','+ this.blue+')';
-//             this.canvas.fill();
-//          }
-//    }//end of face
-
-   canvas1.update = function(c) {
+      canvas1.update = function(c) {
       var spawn_interval = time % 10;
-      var center=250;
-      var mouseZ=this.cursor.z;
+      var spawn_interval2=spawn_interval+5;
 
+       if(spawn_interval2>10){
+            spawn_interval2= spawn_interval2 % 10;
+    
+      }
+      var center = 200;
+      var mouseZ = this.cursor.z;
+
+      //background
       c.beginPath();
       c.moveTo(0, 0);
       c.lineTo(this.width, 0);
@@ -39,99 +28,100 @@
       c.lineTo(0, this.height);
       c.lineTo(0, 0);
       c.stroke();
-      c.fillStyle="gray";
+      c.fillStyle = "gray";
       c.fill();
       c.closePath();
-      console.log(spawn_interval);
 
-      if(spawn_interval == 0){
-            // create face
-            c.beginPath();
-            c.lineWidth=10;
-            c.ellipse(center,center ,125,125,0,2*Math.PI,0,1);
-            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 255+')';
-            c.fill();
-            c.closePath();
+      if (spawn_interval == 0) {
+        // create face
+        c.beginPath();
+        c.lineWidth = 10;
+        c.ellipse(center, center, 125, 125, 0, 2 * Math.PI, 0, 1);
+        //blue
+        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 255 + ')';
+        c.fill();
+        c.closePath();
 
-            // //Eye 1
-            // c.beginPath();
-            // c.lineWidth=5;
-            // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
-            // c.stroke();
-            // c.fillStyle ='rgb(' +0+','+0+','+0+')';
-            // c.fill();
-            // c.stroke(); 
-            // c.closePath();
+        // //Eye 1
+        // c.beginPath();
+        // c.lineWidth=5;
+        // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
+        // c.stroke();
+        // c.fillStyle ='rgb(' +0+','+0+','+0+')';
+        // c.fill();
+        // c.stroke(); 
+        // c.closePath();
 
-            // //Eye 2
-            // c.beginPath();
-            // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
-            // c.stroke();
-            // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-            // c.fill();
-            // c.closePath();
+        // //Eye 2
+        // c.beginPath();
+        // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
+        // c.stroke();
+        // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+        // c.fill();
+        // c.closePath();
 
-            //var mouthPlace=20-spawn_interval;
-            c.beginPath();
-            c.ellipse(center,center+5,10,10,0,2*Math.PI,0,1);
-            c.stroke();
-            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-            c.fill();
-            c.closePath();
-
-      }
-      if(spawn_interval > 0) {
-            // grow big face
-            c.beginPath();
-            c.lineWidth=10;
-            c.ellipse(center,center,45*spawn_interval,45*spawn_interval,0,2*Math.PI,0,1);
-            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 255+')';
-            c.fill();
-            c.closePath();
-
-            // //Eye 1
-            // c.beginPath();
-            // c.lineWidth=5;
-            // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
-            // c.stroke();
-            // c.fillStyle ='rgb(' +0+','+0+','+0+')';
-            // c.fill();
-            // c.stroke(); 
-            // c.closePath();
-
-            // //Eye 2
-            // c.beginPath();
-            // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
-            // c.stroke();
-            // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-            // c.fill();
-            // c.closePath();
-            
-            //Mouth
-            var mouthSize=20*spawn_interval;
-            //var mouthPlace=100/spawn_interval;
-
-            c.beginPath();
-            c.ellipse(center,center+15,mouthSize,mouthSize,0,2*Math.PI,0,1);
-            c.stroke();
-            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-            c.fill();
-            c.closePath();
+        //var mouthPlace=20-spawn_interval;
+        c.beginPath();
+        c.ellipse(center, center + 5, 10, 10, 0, 2 * Math.PI, 0, 1);
+        c.stroke();
+        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
+        c.fill();
+        c.closePath();
+        console.log(39);
 
       }
-      if (spawn_interval > 4) {
-            // grow small face
-           
+      //if (spawn_interval > 0) {
+        // grow big face
+        c.beginPath();
+        c.lineWidth = 10;
+        c.ellipse(center, center, 45 * spawn_interval, 45 * spawn_interval, 0, 2 * Math.PI, 0, 1);
+        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 255 + ')';
+        c.fill();
+        c.closePath();
 
-      }
+        // //Eye 1
+        // c.beginPath();
+        // c.lineWidth=5;
+        // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
+        // c.stroke();
+        // c.fillStyle ='rgb(' +0+','+0+','+0+')';
+        // c.fill();
+        // c.stroke(); 
+        // c.closePath();
+
+        // //Eye 2
+        // c.beginPath();
+        // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
+        // c.stroke();
+        // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+        // c.fill();
+        // c.closePath();
+
+        //Mouth
+        var mouthSize = 30 * spawn_interval;
+        //var mouthPlace=100/spawn_interval;
+
+        c.beginPath();
+        c.ellipse(center, center + 15, mouthSize, mouthSize, 0, 2 * Math.PI, 0, 1);
+        c.stroke();
+        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
+        c.fill();
+        c.closePath();
 
 
-      
+        //second space
+        c.beginPath();
+        c.ellipse(center, center + 15, mouthSize, mouthSize, 0, 2 * Math.PI, 0, 1);
+        c.stroke();
+        c.fillStyle = 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')';
+        c.fill();
+        c.closePath();
+      //}
 
-     
+    } //end of update
 
 
-   }//end of update
+
 
 
 
