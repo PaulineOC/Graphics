@@ -32,46 +32,8 @@
       c.fill();
       c.closePath();
 
-      if (spawn_interval == 0) {
-        // create face
-        c.beginPath();
-        c.lineWidth = 10;
-        c.ellipse(center, center, 125, 125, 0, 2 * Math.PI, 0, 1);
-        //blue
-        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 255 + ')';
-        c.fill();
-        c.closePath();
-
-        // //Eye 1
-        // c.beginPath();
-        // c.lineWidth=5;
-        // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
-        // c.stroke();
-        // c.fillStyle ='rgb(' +0+','+0+','+0+')';
-        // c.fill();
-        // c.stroke(); 
-        // c.closePath();
-
-        // //Eye 2
-        // c.beginPath();
-        // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
-        // c.stroke();
-        // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
-        // c.fill();
-        // c.closePath();
-
-        //var mouthPlace=20-spawn_interval;
-        c.beginPath();
-        c.ellipse(center, center + 5, 10, 10, 0, 2 * Math.PI, 0, 1);
-        c.stroke();
-        c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
-        c.fill();
-        c.closePath();
-        console.log(39);
-
-      }
-      //if (spawn_interval > 0) {
-        // grow big face
+      
+      //FACE 1 - FACE
         c.beginPath();
         c.lineWidth = 10;
         c.ellipse(center, center, 45 * spawn_interval, 45 * spawn_interval, 0, 2 * Math.PI, 0, 1);
@@ -79,7 +41,7 @@
         c.fill();
         c.closePath();
 
-        // //Eye 1
+        // //Face 1: Eye 1
         // c.beginPath();
         // c.lineWidth=5;
         // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
@@ -89,7 +51,7 @@
         // c.stroke(); 
         // c.closePath();
 
-        // //Eye 2
+        // // Face 1: Eye 2
         // c.beginPath();
         // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
         // c.stroke();
@@ -97,7 +59,7 @@
         // c.fill();
         // c.closePath();
 
-        //Mouth
+        //Face 1: Mouth
         var mouthSize = 30 * spawn_interval;
         //var mouthPlace=100/spawn_interval;
 
@@ -109,9 +71,10 @@
         c.closePath();
 
 
-        //second space
+        //Face 2: Face
+        var mouthSize2 = 10*spawn_interval2;
         c.beginPath();
-        c.ellipse(center, center + 15, mouthSize, mouthSize, 0, 2 * Math.PI, 0, 1);
+        c.ellipse(center, center + 15, mouthSize2, mouthSize2, 0, 2 * Math.PI, 0, 1);
         c.stroke();
         c.fillStyle = 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')';
         c.fill();
