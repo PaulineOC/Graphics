@@ -80,9 +80,6 @@
             c.closePath();
 
       }
-      if (spawn_interval == 2500) {
-            // grow small face
-      }
       if(spawn_interval > 0) {
             // grow big face
             c.beginPath();
@@ -122,18 +119,9 @@
             c.closePath();
 
       }
-
-
-
       if (spawn_interval > 4) {
             // grow small face
-            c.beginPath();
-            c.ellipse(center,center+15,mouthSize,mouthSize,0,2*Math.PI,0,1);
-            c.stroke();
-            c.fillStyle ='rgb(' + 255 + ','+0 +','+ 0+')';
-            c.fill();
-            c.closePath();
-
+           
 
       }
 
