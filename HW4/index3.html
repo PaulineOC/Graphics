@@ -1,0 +1,148 @@
+
+<head></head>
+
+<div style="margin:auto; width:50%">
+   <canvas id=canvas1 width=400 height=400>
+</div>
+
+<script src=drawlib1.js></script>
+<script>
+
+      //store and update original colors to integrate imagery?
+      var firstBg = true;
+
+
+
+      var faces = []
+      var circleCount = 0;
+      var timeSinceLastSpawn = 0;
+
+
+
+
+
+      canvas1.update = function(c) {
+
+
+
+            //series of 10 loops
+            var spawn_interval = time % 10;
+            //sets offset of 5
+            var spawn_interval2 = spawn_interval + 5;
+
+             if(spawn_interval2>10){
+                  spawn_interval2= spawn_interval2 % 10;
+            }
+            var center = 200;
+            var mouseZ = this.cursor.z;
+            var count=0;
+
+            // console.log("Sp1   "+spawn_interval);
+            // console.log("Sp2   "+spawn_interval2);
+
+            if(spawn_interval==0){
+                  count++;
+                  console.log("round"+count);
+
+
+            }
+            // console.log(firstBg);
+            if(firstBg){
+                  //background
+                  c.beginPath();
+                  c.moveTo(0, 0);
+                  c.lineTo(this.width, 0);
+                  c.lineTo(this.width, this.height);
+                  c.lineTo(0, this.height);
+                  c.lineTo(0, 0);
+                  c.stroke();
+                  c.fillStyle = "gray";
+                  c.fill();
+                  c.closePath();
+            }
+
+          ////////////////  timeSinceLastSpawn + 
+            if (spawn_interval > 5) {
+                  faces.push(5);
+            }
+            
+
+
+
+            
+            // //FACE 1 - FACE
+            // var faceSize= 45*spawn_interval;
+            // c.beginPath();
+            // c.lineWidth = 10;
+            // c.ellipse(center, center, faceSize, faceSize, 0, 2 * Math.PI, 0, 1);
+            // c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 255 + ')';
+            // c.fill();
+            // c.closePath();
+
+            //   // //Face 1: Eye 1
+            //   // c.beginPath();
+            //   // c.lineWidth=5;
+            //   // c.ellipse(center-30,center-50,10,10,0,2*Math.PI,0,1);
+            //   // c.stroke();
+            //   // c.fillStyle ='rgb(' +0+','+0+','+0+')';
+            //   // c.fill();
+            //   // c.stroke(); 
+            //   // c.closePath();
+
+            //   // // Face 1: Eye 2
+            //   // c.beginPath();
+            //   // c.ellipse(center+30,center-50,10,10,0,2*Math.PI,0,1);
+            //   // c.stroke();
+            //   // c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+            //   // c.fill();
+            //   // c.closePath();
+
+
+
+            // //Face 1: Mouth
+            // var mouthSize = 30 * spawn_interval;
+            // //var mouthPlace=100/spawn_interval;
+            // c.beginPath();
+            // c.ellipse(center, center + 15, mouthSize, mouthSize, 0, 2 * Math.PI, 0, 1);
+            // c.stroke();
+            // c.fillStyle = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
+            // c.fill();
+            // c.closePath();
+
+
+
+            // // if(spawn_interval > 5 && spawn_interval < 10){
+            //       //Face 2: Face
+            //   var faceSize2 = 45*spawn_interval2;
+            //   c.beginPath();
+            //   c.ellipse(center, center + 15, faceSize2, faceSize2, 0, 2 * Math.PI, 0, 1);
+            //   c.fillStyle = 'rgb(' + 255 + ',' + 255 + ',' + 255 + ')';
+            //   c.fill();
+            //   c.closePath();
+
+            //   //Face 2: Mouth
+            //   var mouthSize2 = 30*spawn_interval2;
+            //   c.beginPath();
+            //   c.ellipse(center, center + 30, mouthSize2, mouthSize2, 0, 2 * Math.PI, 0, 1);
+            //   c.fillStyle = 'rgb(' + 255 + ',' + 0 + ',' + 255 + ')';
+            //   c.fill();
+            //   c.closePath();
+
+            // // }
+
+
+            
+
+
+
+    } //end of update
+
+
+
+
+
+
+   draw2DCanvases([canvas1 ]);
+</script>
+
+

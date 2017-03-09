@@ -1,0 +1,86 @@
+<div style="margin:auto; width:50%;" >
+<canvas id="canvas" height="400px" width="400"></canvas></div></body>
+
+
+<script>
+	//canvas stuff
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+
+	//Face Class
+	function face (x, y,r,g,b) {
+	    this.red=r;
+	    this.green=g;
+	    this.blue=b;
+	    this.x =x;
+	    this.y=y;
+	    this.drawFace = function(cnv,fceSize){
+	    	//var faceSize= 45*spawn_interval;
+            cnv.beginPath();
+            cnv.lineWidth = 10;
+            cnv.ellipse(this.x, this.y, fceSize, fceSize, 0, 2 * Math.PI, 0, 1);
+            cnv.fillStyle = 'rgb(' + this.red + ',' + this.green + ',' + this.blue + ')';
+            cnv.fill();
+            cnv.closePath();
+	    }
+	}
+
+	//528/508
+
+	//interval 
+	setInterval(function(){
+		var testFace = new face(200,200,255,0,255);
+		console.log(testFace);
+		
+		//background color
+		ctx.beginPath();
+	    ctx.moveTo(0, 0);
+	    ctx.lineTo(400, 0);
+	    ctx.lineTo(400,400);
+	    ctx.lineTo(0, 400);
+	    ctx.lineTo(0, 0);
+	    ctx.stroke();
+	    ctx.fillStyle = "gray";
+	    ctx.fill();
+	    ctx.closePath();
+
+	    var test = (Date.now() / 1000) % 10;
+	    console.log(test);
+
+
+		//circle code 
+		testFace.drawFace(ctx,test);
+
+
+
+
+
+
+
+	},10000);
+	//end of interval
+
+	var testFace = new face(200,200,255,0,255);
+	console.log(testFace);
+	
+	//background color
+	ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(400, 0);
+    ctx.lineTo(400,400);
+    ctx.lineTo(0, 400);
+    ctx.lineTo(0, 0);
+    ctx.stroke();
+    ctx.fillStyle = "gray";
+    ctx.fill();
+    ctx.closePath();
+
+	//circle code 
+
+testFace.drawFace(ctx,10);
+
+
+
+
+
+</script>
