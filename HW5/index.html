@@ -1,0 +1,119 @@
+
+<head></head>
+
+<div style="margin:auto; width:50%">
+   <canvas id=canvas1 width=400 height=400>
+</div>
+
+<script src=drawlib1.js></script>
+<script>
+
+      var firstBg = true;
+      var faces = [];
+      var circleCount = 0;
+      var timeSinceLastSpawn = 0;
+
+      //Face Class
+      function face (x, y,r,g,b,s) {
+          this.red=r;
+          this.green=g;
+          this.blue=b;
+          this.x =x;
+          this.y=y;
+          this.size=s;
+          this.mouthsize = .5*s;
+          this.drawFace = function(c,fceSize){
+
+            var faceSize= fceSize;
+            //Face
+            c.beginPath();
+            c.lineWidth = 10;
+            c.ellipse(this.x,this.y, faceSize, faceSize, 0, 2 * Math.PI, 0, 1);
+            c.fillStyle = 'rgb(' + Math.floor(this.red) + ',' + Math.floor(this.green) + ',' + Math.floor(this.blue)+ ')';
+            c.fill();
+            c.closePath();
+
+            //Eye 1
+            c.beginPath();
+            c.lineWidth=5;
+            c.ellipse(this.x+(30*faceSize/100),this.y-(50*faceSize/100),.1*faceSize,.1*faceSize,0,2*Math.PI,0,1);
+            c.stroke();
+            c.fillStyle ='rgb(' +0+','+0+','+0+')';
+            c.fill();
+            c.stroke(); 
+            c.closePath();
+
+            //Eye 2
+            c.beginPath();
+            c.ellipse(this.x-(30*faceSize/100),this.y-(50*faceSize/100),.1*faceSize,.1*faceSize,0,2*Math.PI,0,1);
+            c.stroke();
+            c.fillStyle ='rgb(' + 0 + ','+0 +','+ 0+')';
+            c.fill();
+            c.closePath();
+
+            //Mouth
+            c.beginPath();
+            c.lineWidth = 10;
+            c.ellipse(this.x,this.y, .35*faceSize, .35*faceSize, 0, 2 * Math.PI, 0, 1);
+            c.fillStyle = 'rgb(' + Math.floor(0) + ',' + Math.floor(0) + ',' + Math.floor(0)+ ')';
+            c.fill();
+            c.closePath();
+
+          }
+      }
+
+      canvas1.update = function(c) {
+            //series of 10 loops
+            var spawn_interval = time % 10;
+            //sets offset of 5
+            var spawn_interval2 = spawn_interval + 5;
+
+             if(spawn_interval2>10){
+                  spawn_interval2= spawn_interval2 % 10;
+            }
+            var center = 200;
+            var mouseZ = this.cursor.z;
+            var count=0;
+
+            // console.log(firstBg);
+            if(firstBg){
+                  //background
+                  c.beginPath();
+                  c.moveTo(0, 0);
+                  c.lineTo(this.width, 0);
+                  c.lineTo(this.width, this.height);
+                  c.lineTo(0, this.height);
+                  c.lineTo(0, 0);
+                  c.stroke();
+                  c.fillStyle = "gray";
+                  c.fill();
+                  c.closePath();
+            }
+
+          //1 run of update function = 30 milliseconds (from ken's code)
+            timeSinceLastSpawn += 30;
+            if (timeSinceLastSpawn >= 500) {
+                  timeSinceLastSpawn = 0;
+
+                  var addFace = new face(center, center, Math.random()*255,Math.random()*255,Math.random()*255, 0);
+                  faces.push(addFace);
+                  if (faces.length > 5) {
+                        faces.shift();
+                  }
+            }
+
+            for (var i = 0; i < faces.length;i++){
+                  faces[i].drawFace(c,faces[i].size);
+                  faces[i].size += 10;
+                  // console.log(faces[i].size);
+            }
+    } //end of update
+
+
+draw2DCanvases([canvas1]);
+
+
+
+</script>
+
+
