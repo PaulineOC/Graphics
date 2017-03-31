@@ -107,7 +107,6 @@ Attempt at a Fish
          g.lineWidth = 2;
          
 
-         //M.translate(m,[2,4,1]);
 
      
 
@@ -138,27 +137,23 @@ Attempt at a Fish
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
 
          //Potential eyeball?
+         // M.identity(m);
+         // M.scale(m, .1);
+         // M.translate(m,[2.5,1.5,0]);
+         // g.strokeStyle="#FF0000";
+         // drawCurves(m, S.parametricMesh(S.torus, 8, 8));
+   
+
+         //Tail Fin
          M.identity(m);
-         M.scale(m, .1);
-         M.translate(m,[2.5,1.5,0]);
-         g.strokeStyle="#FF0000";
-         for(var i=0;i<2;i++){
-            M.rotateZ(m,i*2);
-            //M.rotateY(m,i*2);
-            drawCurves(m, S.parametricMesh(S.torus, 8, 8));
-         }
+         M.scale(m, .25);
+         M.translate(m,[-2.5,0,0]);
+         g.strokeStyle="#0000FF";
+         drawCurves(m, S.parametricMesh(S.torus, 3, 3));
 
 
-         //Fins
-         M.identity(m);
-         M.scale(m, .125);
-         M.translate(m,[-5,0,0]);
-         g.strokeStyle="#FF0000";
-         for(var i=0;i<2;i++){
-            M.rotateZ(m,i*2);
-            //M.rotateY(m,i*2);
-            drawCurves(m, S.parametricMesh(S.torus, 8, 8));
-         }
+         
+        
 
 
 
