@@ -94,13 +94,8 @@ Attempt at a Fish
       M.save(m);
 
       M.rotateY(m, 20);
-      //M.rotateX(m, time/2);
-
-      //move?
-
-
+      
 	 // DRAW AN OPEN PARAMETRIC-MESH TUBE.
-         //drawCurves(m, S.parametricMesh(S.tube, 16, 4));
 
          // DRAW OCTAHEDRON WITH THICK LINES
          g.strokeStyle='#ff0000';
@@ -108,40 +103,37 @@ Attempt at a Fish
          
 
 
-     
-
          //Sphere
          g.strokeStyle='#0000ff';
-         drawCurves(m, S.parametricMesh(S.sphere, 20, 20));
+         drawCurves(m, S.parametricMesh(S.sphere, 20, 10));
          M.save(m);
 
-         //Torus
-         g.strokeStyle="#004400";
-         M.scale(m,.25);
+         g.lineWidth = 1;
 
-         //rotate back and forth over an interval??
-         
-         //First lip
-        // M.rotateX(m,20*Math.cos(time));
-         M.rotateX(m,20);
-         M.translate(m,[5,3,0]);
+         //First Lip
+         g.strokeStyle="#0000FF";
+         M.identity(m);
+         M.scale(m,.1);
+         M.translate(m,[5,.5,0]);
+         M.rotateX(m,2); 
+         M.rotateY(m,10*Math.cos(time));
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
           //Bottom lip
-         g.strokeStyle="#00FF00";
-         //M.rotateX(m,9);
-         // M.rotateY(m,5)
-         // M.rotateX(m,3)
-         M.translate(m,[4.,-3.,0]);
-         M.rotateY(m,2); 
-         M.rotateX(m,2)
+         g.strokeStyle="#0000FF";
+         M.identity(m);
+         M.scale(m,.1);
+         M.translate(m,[5,-.5,0]);
+         M.rotateX(m,2); 
+         M.rotateY(m,-10);
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
 
+         g.lineWidth = 2;
          //Potential eyeball?
-         // M.identity(m);
-         // M.scale(m, .1);
-         // M.translate(m,[2.5,1.5,0]);
-         // g.strokeStyle="#FF0000";
-         // drawCurves(m, S.parametricMesh(S.torus, 8, 8));
+         M.identity(m);
+         M.scale(m, .1);
+         M.translate(m,[2.5,1.5,0]);
+         g.strokeStyle="#FF0000";
+         drawCurves(m, S.parametricMesh(S.torus, 8, 8));
    
 
          //Tail Fin
