@@ -116,6 +116,7 @@ Attempt at a Fish
          M.scale(m,.1);
          M.translate(m,[5,.5,0]);
          M.rotateX(m,2); 
+         
          M.rotateY(m,10);
          M.rotateY(m,Math.sin(time%4));
 
@@ -127,8 +128,8 @@ Attempt at a Fish
          M.translate(m,[5,-.5,0]);
          M.rotateX(m,2); 
          M.rotateY(m,-10);
-        // M.rotateY(m,Math.sin(time%4));
-         M.rotateY(m,-Math.cos(time%4));
+         M.rotateY(m,Math.sin(time%4)+5);
+         //M.rotateY(m,-Math.cos(time%4));
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
 
          g.lineWidth = 2;
