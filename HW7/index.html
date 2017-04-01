@@ -116,7 +116,9 @@ Attempt at a Fish
          M.scale(m,.1);
          M.translate(m,[5,.5,0]);
          M.rotateX(m,2); 
-         M.rotateY(m,10*Math.cos(time));
+         M.rotateY(m,10);
+         M.rotateY(m,Math.sin(time%4));
+
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
           //Bottom lip
          g.strokeStyle="#0000FF";
@@ -125,14 +127,16 @@ Attempt at a Fish
          M.translate(m,[5,-.5,0]);
          M.rotateX(m,2); 
          M.rotateY(m,-10);
+        // M.rotateY(m,Math.sin(time%4));
+         M.rotateY(m,-Math.cos(time%4));
          drawCurves(m, S.parametricMesh(S.torus, 10, 10));
 
          g.lineWidth = 2;
          //Potential eyeball?
+         g.strokeStyle="#990099";
          M.identity(m);
          M.scale(m, .1);
          M.translate(m,[2.5,1.5,0]);
-         g.strokeStyle="#FF0000";
          drawCurves(m, S.parametricMesh(S.torus, 8, 8));
    
 
