@@ -1,12 +1,10 @@
 
 <table>
-
+<h1> Danny Zuko and the Windy Day</h1>
 <tr>
 <td><canvas id=canvas1 width=1000 height=600></td>
 <td width=50></td>
-<td valign=top>
-Parametric meshes of shapes.
-</td>
+
 </tr>
 
 </table>
@@ -21,7 +19,6 @@ Parametric meshes of shapes.
    var Hermite = [2,-3,0,1, -2,3,0,0, 1,-2,1,0, 1,-1,0,0];
 
    function cubic(A, t) { return A[0] * t*t*t + A[1] * t*t + A[2] * t + A[3]; }
-
 
    var faceSize  = 125;
    var posX=1000/2;
@@ -46,7 +43,7 @@ Parametric meshes of shapes.
       //Face
       g.beginPath();
       g.lineWidth=2.5;
-      g.fillStyle ='rgb(' +0+','+75+','+48+')';
+      g.fillStyle ='rgb(' +255+','+224+','+189+')';
       g.ellipse(posX, posY, faceSize, faceSize, 45 * Math.PI/180, 0, 2 * Math.PI);
       g.fill();
       g.stroke();
@@ -54,15 +51,15 @@ Parametric meshes of shapes.
       //Eye 1
       g.beginPath();
       g.lineWidth=2.5;
-      g.fillStyle ='rgb(' +255+','+255+','+0+')';
-      g.ellipse(posX+(40*faceSize/100),posY-(40*faceSize/100),.14*faceSize,.1*faceSize,0,2*Math.PI,0,1);
+      g.fillStyle ='rgb(' +0+','+0+','+0+')';
+      g.ellipse(posX+(40*faceSize/100),posY-(40*faceSize/100),.14*faceSize,.14*faceSize,0,2*Math.PI,0,1);
       g.fill();
       g.closePath();
       //Eye 2
       g.beginPath();
       g.lineWidth=2.5;
-      g.ellipse(posX-(40*faceSize/100),posY-(40*faceSize/100),.14*faceSize,.1*faceSize,0,2*Math.PI,0,1);
-      g.fillStyle ='rgb(' +255+','+255+','+0+')';
+      g.ellipse(posX-(40*faceSize/100),posY-(40*faceSize/100),.14*faceSize,.14*faceSize,0,2*Math.PI,0,1);
+      g.fillStyle ='rgb(' +0+','+0+','+0+')';
       g.fill();
       g.closePath();
 
@@ -81,11 +78,14 @@ Parametric meshes of shapes.
          this.drawCurves(m, [ Ca ]);
       }
 
+
+      //Hair 
+
       M.identity(m);
       //M.save(m);
       for(var i=1;i<6;i++){
-      var P0 = [.1*(i/6),-.1,  0];
-      var P1 = [ .15*i/6, .2,  0];
+      var P0 = [.1*(i/6)*Math.sin(3*time),-.1,  0];
+      var P1 = [ .15*i/6*Math.sin(time), .2,  0];
       var R0 = [  1.,  0,  0];
       var R1 = [  1,  0,  0];
       var X = M.transform(Hermite, [ P0[0], P1[0], R0[0], R1[0] ]);
