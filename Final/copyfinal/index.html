@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Stylesheet -->
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="js/three.min.js"></script>
+
+		
+		<script type="text/javascript" src="js/world.js"/></script>
+		<script type="text/javascript" src="js/M.js"></script>
+
+
+	</head>
+    <body>
+		<div><canvas id=canvas1 width=1000 height=625></div>
+		<div id="world"></div>
+						   <audio autoplay="true" src="little.mp3" style="display: none">
+
+
+
+
+	<!-- 				   <audio autoplay="true" src="little.mp3" style="display: none">
+-->
+    </body>
+	<script src=js/drawlib1.js></script>
+	<script src=js/drawlib2.js></script>
+
+	<script src=js/M.js></script>
+	<script src=js/S.js></script>
+
+
+
+
+	<script>
+
+
+		
+
+	   var m = [0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0];
+	   var Hermite = [2,-3,0,1, -2,3,0,0, 1,-2,1,0, 1,-1,0,0];
+	   function cubic(A, t) { return A[0] * t*t*t + A[1] * t*t + A[2] * t + A[3]; }
+	   var posX=1000/2;
+	   var posY=3*600/4;
+	   var startPosX=25;
+	   var startPosY=300;
+
+	   var squid=false;
+	   var lastDownTarget;
+
+	   canvas = document.getElementById('canvas');
+		document.addEventListener('keydown', function(event) {
+			if(lastDownTarget == canvas && event.keyCode == '82' ) {
+				console.log('squi');
+	            squid=!squid;
+        	}	
+		});
+
+
+	   canvas1.update = function(g) {
+		   	if(squid){
+			   	g.lineCap = 'round';
+			    g.lineJoin = 'round';
+			    g.lineWidth = 1;
+			     //Squid Body 
+			    g.beginPath();
+			    g.moveTo(startPosX,startPosY);
+			    g.lineTo(startPosX+150,startPosY-50);
+			    g.lineTo(startPosX+150,startPosY+50);
+			    g.fillStyle = "black";
+			    g.fill();
+			    g.stroke();
+			    g.closePath();
+				//Math.cos(time)
+			   M.identity(m); 
+			    for(var i=1;i<6;i++){
+				      var P0 = [-.850,.045,  0];
+				      var P1 = [ (-.850*Math.cos(time*1.5))/6,-.3*(i/6),  0];
+				      var R0 = [  1.,  0,  0];
+				      var R1 = [  1,  0,  0];
+				      var X = M.transform(Hermite, [ P0[0], P1[0], R0[0], R1[0] ]);
+				      var Y = M.transform(Hermite, [ P0[1], P1[1], R0[1], R1[1] ]);
+				      var Z = M.transform(Hermite, [ P0[2], P1[2], R0[2], R1[2] ]);
+				      var C = [];
+				      for (var t = 0 ; t < 1.001 ; t += 1/20){
+				         C.push([ cubic(X,t), cubic(Y,t), cubic(Z,t) ]);
+				         this.drawCurves(m, [ C ]);
+				     }
+			   	}//end of for
+
+			   	g.beginPath();
+			   	g.moveTo(50,50);
+			   	g.closePath();
+
+			}
+		}  
+	   drawCanvases([canvas1]);
+</script>
+
+
+
+
+
+</html>
